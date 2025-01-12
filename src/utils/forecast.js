@@ -1,5 +1,6 @@
 const axios = require('axios')
 
+
 const forecast = (addresslat, addresslong, callback) => {
     const url = 'http://api.weatherstack.com/current?access_key=33021d28aae22e47dc871a6ee836bc15&query=' + addresslat + ',' + addresslong + '&units=f'
      axios.get(url)
@@ -8,7 +9,7 @@ const forecast = (addresslat, addresslong, callback) => {
             callback('Unable to Find location!', undefined)
         }
         else {
-            callback(undefined, 'It is currently ' + data.current.temperature + ' degrees out. It feels like ' + data.current.feelslike + ' degrees out')
+            callback(undefined, 'It is currently ' + data.current.temperature + ' degrees out. It feels like ' + data.current.feelslike + ' degrees out and ' + 'The wind speed is ' + data.current.wind_speed)
         }
     })
     .catch ((error) => {
